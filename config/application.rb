@@ -28,5 +28,7 @@ module Actioncabletest
     config.action_cable.mount_path = '/cable'
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.hosts << "actioncabletest-production.up.railway.app"
   end
 end
