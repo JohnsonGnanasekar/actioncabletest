@@ -1,0 +1,35 @@
+
+<div class="card-body">
+  <%= button_to(
+        "Home",
+        chats_path,
+        method: :get
+      ) %>
+</div>
+<%= form_tag profiles_path, method: :get do %>
+  <%= select_tag :gender, options_for_select(['', 'male', 'female']) %>
+  <%= select_tag :category, options_for_select(['', 'realistic', 'anime']) %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Category</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @profiles.each do |profile| %>
+    <tr>
+      <td><%= profile.name %></td>
+      <td><%= profile.gender %></td>
+      <td><%= profile.category %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @profiles %>
