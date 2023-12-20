@@ -85,3 +85,5 @@ end
 
 gem 'redis', '~> 4.2'
 gem 'redis-rails', '~> 5.0'
+
+gem 'bullet'
