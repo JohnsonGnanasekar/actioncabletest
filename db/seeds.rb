@@ -10,7 +10,7 @@
 require 'faker'
 require 'benchmark'
 
-
+# Create two example servers
 Server.create(name: 'server-1', url: 'http://34.36.42.74/api/v1/chat')
 Server.create(name: 'server-2', url: 'http://34.36.42.74/api/v1/chat')
 
