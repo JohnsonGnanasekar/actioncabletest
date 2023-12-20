@@ -13,14 +13,41 @@ require 'faker'
 Server.create(name: 'server-1', url: 'http://34.36.42.74/api/v1/chat')
 Server.create(name: 'server-2', url: 'http://34.36.42.74/api/v1/chat')
 
-categories = ['realistic', 'anime']
-genders = ['male', 'female']
 
-# Generate 100,000 profiles
-100.times do
-  Profile.create!(
-    gender: genders.sample,
-    category: categories.sample,
-    name: Faker::Name.name
-  )
+# Set the number of records to create
+num_records = 100_000
+
+# Batch size for efficient processing
+batch_size = 10000
+
+# Calculate the number of batches
+num_batches = (num_records / batch_size.to_f).ceil
+
+puts "Seeding #{num_records} profiles..."
+
+# Helper method to generate an array of profile attributes
+def generate_profiles(batch_size)
+  categories = %w[realistic anime]
+  genders = %w[male female]
+  Array.new(batch_size) do
+    {
+      gender: genders.sample,
+      category: categories.sample,
+      name: Faker::Name.name,
+      created_at: Faker::Time.between(from: 1.year.ago, to: Time.now),
+      updated_at: Faker::Time.between(from: 1.year.ago, to: Time.now)
+    }
+  end
 end
+
+
+# Start seeding
+num_batches.times do |batch_number|
+  puts "Processing batch #{batch_number + 1}/#{num_batches}"
+
+  # Use the `insert_all` method for efficient bulk inserts
+  Profile.insert_all(generate_profiles(batch_size))
+end
+
+puts 'Seeding completed.'
+
