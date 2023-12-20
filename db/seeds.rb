@@ -17,7 +17,7 @@ categories = ['realistic', 'anime']
 genders = ['male', 'female']
 
 # Generate 100,000 profiles
-100_000.times do
+100.times do
   Profile.create!(
     gender: genders.sample,
     category: categories.sample,

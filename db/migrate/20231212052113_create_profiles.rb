@@ -1,9 +1,9 @@
 class CreateProfiles < ActiveRecord::Migration[7.1]
   def change
     create_table :profiles do |t|
-      t.string :name
-      t.string :gender, index: true
-      t.string :category, index: true
+      t.string :name, null: false
+      t.string :gender, null: false, index: true
+      t.string :category, null: false, index: true
 
       t.timestamps
     end
