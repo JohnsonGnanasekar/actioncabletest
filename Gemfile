@@ -81,9 +81,10 @@ group :development, :test do
   gem 'factory_bot'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'bullet'
 end
 
 gem 'redis', '~> 4.2'
 gem 'redis-rails', '~> 5.0'
 
-gem 'bullet'
+
