@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'faker'
+require 'benchmark'
 
 
 Server.create(name: 'server-1', url: 'http://34.36.42.74/api/v1/chat')
@@ -42,12 +43,14 @@ end
 
 
 # Start seeding
+execution_time = Benchmark.measure do
 num_batches.times do |batch_number|
   puts "Processing batch #{batch_number + 1}/#{num_batches}"
 
   # Use the `insert_all` method for efficient bulk inserts
   Profile.insert_all(generate_profiles(batch_size))
 end
+end
 
 puts 'Seeding completed.'
-
+puts "Execution Time: #{execution_time.real} seconds"

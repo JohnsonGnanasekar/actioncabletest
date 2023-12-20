@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_12_052113) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["role"], name: "index_messages_on_role"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
