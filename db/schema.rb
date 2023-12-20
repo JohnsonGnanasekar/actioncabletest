@@ -29,8 +29,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_12_052113) do
     t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category"], name: "index_profiles_on_category"
-    t.index ["gender"], name: "index_profiles_on_gender"
   end
 
   create_table "servers", force: :cascade do |t|

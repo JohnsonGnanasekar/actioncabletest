@@ -8,46 +8,23 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'faker'
-
+require 'benchmark'
 
 Server.create(name: 'server-1', url: 'http://34.36.42.74/api/v1/chat')
 Server.create(name: 'server-2', url: 'http://34.36.42.74/api/v1/chat')
 
+categories = ['realistic', 'anime']
+genders = ['male', 'female']
 
-# Set the number of records to create
-num_records = 100_000
-
-# Batch size for efficient processing
-batch_size = 10000
-
-# Calculate the number of batches
-num_batches = (num_records / batch_size.to_f).ceil
-
-puts "Seeding #{num_records} profiles..."
-
-# Helper method to generate an array of profile attributes
-def generate_profiles(batch_size)
-  categories = %w[realistic anime]
-  genders = %w[male female]
-  Array.new(batch_size) do
-    {
+# Generate 100,000 profiles
+execution_time = Benchmark.measure do
+100_000.times do
+    Profile.create!(
       gender: genders.sample,
       category: categories.sample,
-      name: Faker::Name.name,
-      created_at: Faker::Time.between(from: 1.year.ago, to: Time.now),
-      updated_at: Faker::Time.between(from: 1.year.ago, to: Time.now)
-    }
-  end
+      name: Faker::Name.name
+    )
+end
 end
 
-
-# Start seeding
-num_batches.times do |batch_number|
-  puts "Processing batch #{batch_number + 1}/#{num_batches}"
-
-  # Use the `insert_all` method for efficient bulk inserts
-  Profile.insert_all(generate_profiles(batch_size))
-end
-
-puts 'Seeding completed.'
-
+puts "Execution Time: #{execution_time.real} seconds"
