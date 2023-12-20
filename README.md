@@ -31,3 +31,7 @@ Optimazation steps taken:
 3. Added index to Messages table for role column & already user_id index added through user table reference instruction.
 4. Added bullet gem to track any N+1 query execution & tracking long query execution in this app.
 5. Pagination was already added to Profile index page.
+
+Rspec test suite screenshots:
+![image](https://github.com/JohnsonGnanasekar/actioncabletest/assets/49266702/fb183d79-b01c-46e4-a963-9bd72e875920)
+![image](https://github.com/JohnsonGnanasekar/actioncabletest/assets/49266702/37874850-bebf-44af-94e0-1ad9ee23266c)
