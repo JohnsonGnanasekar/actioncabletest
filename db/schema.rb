@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_12_052113) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "name"
-    t.string "gender"
-    t.string "category"
+    t.string "name", null: false
+    t.string "gender", null: false
+    t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category"], name: "index_profiles_on_category"
@@ -34,8 +34,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_12_052113) do
   end
 
   create_table "servers", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
+    t.string "name", null: false
+    t.string "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

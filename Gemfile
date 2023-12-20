@@ -18,7 +18,7 @@ gem "puma", ">= 5.0"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", ">= 4.0.1"
+#gem "redis", ">= 4.0.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -56,6 +56,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'rails-controller-testing'
 end
 
 gem 'devise'
@@ -74,7 +78,10 @@ gem "kaminari"
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
-  gem 'factory_girl_rails'
+  gem 'factory_bot'
   gem 'capybara'
   gem 'database_cleaner'
 end
+
+gem 'redis', '~> 4.2'
+gem 'redis-rails', '~> 5.0'
