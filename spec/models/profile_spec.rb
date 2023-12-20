@@ -34,8 +34,8 @@ RSpec.describe Profile, type: :model do
   end
 
   describe 'seeded' do
-    it 'should have 100 profiles after seeding' do
-      expect(Profile.count).to eq(100)
+    it 'should have 100000 profiles after seeding' do
+      expect(Profile.count).to eq(100000)
     end
   end
 
