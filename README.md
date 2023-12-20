@@ -21,7 +21,9 @@ Local Performance Analysis:
 	After optimisation: 17.8ms 
 4. Chat index db execution:
 	Before optimisation: 1.7 ms
-	After optimisation: 1.6ms 
+	After optimisation: 1.6ms
+
+code branch before optimisation branch: before_db_optimization
 
 Used Benchmark & middleware default execution time logger.
 
